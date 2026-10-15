@@ -6,7 +6,7 @@ Authors: Kim Morrison
 
 module
 
-public import HexMatrixMathlib.Vector
+public import HexMatrixTheory.Vector
 
 public section
 
@@ -22,7 +22,7 @@ corresponding additive, linear, ring, and algebra equivalences.
 
 open Matrix
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 universe u
 
@@ -221,4 +221,4 @@ def matrixAlgEquiv [CommSemiring R] : Hex.Matrix R n n ≃ₐ[R] Matrix (Fin n) 
 @[simp] theorem matrixAlgEquiv_apply [CommSemiring R] (M : Hex.Matrix R n n) :
     matrixAlgEquiv M = matrixEquiv M := rfl
 
-end HexMatrixMathlib
+end HexMatrixTheory

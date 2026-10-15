@@ -6,7 +6,7 @@ Authors: Kim Morrison
 
 module
 
-public import HexMatrixMathlib.Vector
+public import HexMatrixTheory.Vector
 public import HexMatrix.Submatrix
 
 public section
@@ -18,7 +18,7 @@ Mathlib's `Matrix.submatrix` reindexed along `Fin.castLE`.
 
 open Matrix
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 universe u
 
@@ -58,4 +58,4 @@ variable {R : Type u} {n m : Nat}
   simp only [matrixEquiv_apply, Hex.Matrix.getElem_selectCols, Matrix.submatrix_apply, id_eq]
   rfl
 
-end HexMatrixMathlib
+end HexMatrixTheory

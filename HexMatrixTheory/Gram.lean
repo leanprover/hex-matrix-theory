@@ -6,7 +6,7 @@ Authors: Kim Morrison
 
 module
 
-public import HexMatrixMathlib.Algebra
+public import HexMatrixTheory.Algebra
 public import HexMatrix.Gram
 
 public section
@@ -17,7 +17,7 @@ The executable Gram matrix corresponds to `M * Mᵀ` under `matrixEquiv`.
 
 open Matrix
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 universe u
 
@@ -33,4 +33,4 @@ variable {R : Type u} {n m : Nat}
   rw [Matrix.transpose_apply]
   grind
 
-end HexMatrixMathlib
+end HexMatrixTheory

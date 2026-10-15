@@ -6,7 +6,7 @@ Authors: Kim Morrison
 
 module
 
-public import HexMatrixMathlib.Basic
+public import HexMatrixTheory.Basic
 public import Mathlib.LinearAlgebra.Matrix.Notation
 public import Mathlib.Data.Fin.VecNotation
 public meta import Mathlib.Data.Fin.VecNotation
@@ -39,7 +39,7 @@ quotes row lists and the identification proof.
 
 open Matrix
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 /-! # `List.getD` -/
 
@@ -137,13 +137,13 @@ structure KernelConfig where
   equal to the plain one under a bound the kernel verifies. -/
   packing : Bool := true
 
-end HexMatrixMathlib
+end HexMatrixTheory
 
 end
 
 public meta section
 
-namespace HexMatrixMathlib.Literal
+namespace HexMatrixTheory.Literal
 
 /-- Elaborate the `optConfig` of a matrix tactic into a `KernelConfig`. -/
 declare_config_elab elabKernelConfig KernelConfig
@@ -333,13 +333,13 @@ def addClosedProof (target proof : Expr) : MetaM Expr := do
 /-- The proof of `A = ofLists n m L` along the literal's route: `rfl` for a
 vector chain, one kernel `decide` on `entriesEq` otherwise. -/
 def identification (lit : Recognized) (A L : Expr) : MetaM Expr := do
-  let ofL ← mkAppM ``HexMatrixMathlib.ofLists #[mkNatLit lit.n, mkNatLit lit.m, L]
+  let ofL ← mkAppM ``HexMatrixTheory.ofLists #[mkNatLit lit.n, mkNatLit lit.m, L]
   match lit.route with
   | .chain => mkExpectedTypeHint (← mkEqRefl A) (← mkEq A ofL)
   | .entrywise =>
-      let check ← mkEq (← mkAppM ``HexMatrixMathlib.entriesEq #[mkNatLit lit.n, mkNatLit lit.m, A, L])
+      let check ← mkEq (← mkAppM ``HexMatrixTheory.entriesEq #[mkNatLit lit.n, mkNatLit lit.m, A, L])
         (mkConst ``Bool.true)
-      mkAppM ``HexMatrixMathlib.eq_ofLists_of_entriesEq
+      mkAppM ``HexMatrixTheory.eq_ofLists_of_entriesEq
         #[mkNatLit lit.n, mkNatLit lit.m, A, L, ← decideProof check]
 
 /-- Elaborate a matrix argument with the frontend's carrier expectation.
@@ -398,11 +398,11 @@ def vectorIdentification (lit : VectorLiteral) (v xs : Expr) : MetaM Expr := do
   let n := mkNatLit lit.size
   match lit.route with
   | .chain =>
-      let rhs ← mkAppM ``HexMatrixMathlib.vecOfList #[n, xs]
+      let rhs ← mkAppM ``HexMatrixTheory.vecOfList #[n, xs]
       mkExpectedTypeHint (← mkEqRefl v) (← mkEq v rhs)
   | .entrywise =>
-      let check ← mkEq (← mkAppM ``HexMatrixMathlib.vectorEntriesEq #[n, v, xs])
+      let check ← mkEq (← mkAppM ``HexMatrixTheory.vectorEntriesEq #[n, v, xs])
         (mkConst ``Bool.true)
-      mkAppM ``HexMatrixMathlib.eq_vecOfList_of_entriesEq #[n, v, xs, ← decideProof check]
+      mkAppM ``HexMatrixTheory.eq_vecOfList_of_entriesEq #[n, v, xs, ← decideProof check]
 
-end HexMatrixMathlib.Literal
+end HexMatrixTheory.Literal

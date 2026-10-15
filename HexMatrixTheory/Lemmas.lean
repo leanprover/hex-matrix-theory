@@ -6,7 +6,7 @@ Authors: Kim Morrison
 
 module
 
-public import HexMatrixMathlib.Vector
+public import HexMatrixTheory.Vector
 
 public section
 
@@ -18,7 +18,7 @@ Correspondence lemmas carrying the executable container API of `Hex.Matrix`
 
 open Matrix
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 universe u
 
@@ -55,4 +55,4 @@ Mathlib's `ᵀ`. -/
   rw [matrixEquiv_apply, Hex.Matrix.getElem_setCol, Matrix.updateCol_apply,
     matrixEquiv_apply]
 
-end HexMatrixMathlib
+end HexMatrixTheory

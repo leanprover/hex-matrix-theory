@@ -6,7 +6,7 @@ Authors: Kim Morrison
 
 module
 
-public import HexMatrixMathlib.Basic
+public import HexMatrixTheory.Basic
 
 public section
 
@@ -15,13 +15,13 @@ The executable-`Vector` ↔ Mathlib-`Fin n → R` equivalence, the fold-to-`Fins
 bridge for dot products, and the matrix-vector-product correspondence.
 
 These are the base facts through which the row-span, rank, and nullspace bridges
-(in `HexRowReduceMathlib`) and the lattice bridges (in `HexLLLMathlib`) move
+(in `HexRowReduceTheory`) and the lattice bridges (in `HexLLLTheory`) move
 between the two vector representations.
 -/
 
 open Matrix
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 universe u
 
@@ -101,4 +101,4 @@ theorem vectorEquiv_mulVec [Semiring R] (M : Hex.Matrix R n m) (v : Vector R m) 
   intro k _
   simp
 
-end HexMatrixMathlib
+end HexMatrixTheory

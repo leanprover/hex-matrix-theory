@@ -1,14 +1,14 @@
-# hex-matrix-mathlib (depends on hex-matrix + Mathlib)
+# hex-matrix-theory (depends on hex-matrix + Mathlib)
 
-Base Mathlib bridge for the matrix family: proves that our dense matrix type and
+Base theory companion for the matrix family: proves that our dense matrix type and
 its elementary operations correspond to Mathlib's abstract linear algebra.
 
 Mathlib's matrices are function-based and its rank/kernel/span are noncomputable
 (cardinals, infima over submodules). This bridge connects our computable
 representation to Mathlib's, starting from the matrix equivalence and the
 elementary-row-operation dictionary. The row-reduction, determinant, and Bareiss
-correspondences build on this base in `HexRowReduceMathlib`,
-`HexDeterminantMathlib`, and `HexBareissMathlib` respectively.
+correspondences build on this base in `HexRowReduceTheory`,
+`HexDeterminantTheory`, and `HexBareissTheory` respectively.
 
 **Matrix equivalence:**
 ```lean
@@ -76,7 +76,7 @@ theorem matrixEquiv_principalSubmatrix : matrixEquiv (principalSubmatrix M k hk)
 
 ## Matrix literals
 
-`HexMatrixMathlib/Literal.lean` is the literal layer the matrix tactics
+`HexMatrixTheory/Literal.lean` is the literal layer the matrix tactics
 share ([SPEC/matrix-tactics.md](../../SPEC/matrix-tactics.md) §Placement);
 no tactic lives here.
 
@@ -100,7 +100,7 @@ row list `L` of its entries by one of two routes:
 
 The definitional route is the primary one: the kernel never evaluates an
 entry through `Matrix.of` and `vecCons` inside a certificate's arithmetic.
-The meta section (`HexMatrixMathlib.Literal`) recognizes the shape and
+The meta section (`HexMatrixTheory.Literal`) recognizes the shape and
 carrier from the type (`shape?`), the literal behind definitions
 (`matchLiteral?`, returning the dimensions, carrier, row-major entry
 expressions and the route), evaluates entries with Mathlib's
@@ -114,7 +114,7 @@ evaluates the certificate a second time) and elaborates a term-form
 argument with an
 integer expectation for the `!![…]` notations (`elabArgument`). `Certified` is the record the `%` term forms return.
 The empty shapes `!![]`, `!![,,,]` and `!![;;;]` are literals of their
-dimensions. Tests: `HexMatrixMathlib/Tests.lean` identifies each syntax and
+dimensions. Tests: `HexMatrixTheory/Tests.lean` identifies each syntax and
 the empty shapes with its row list.
 
 
@@ -138,7 +138,7 @@ require the following shared adapters:
 
 These adapters serve `min_poly`, `smith`, `hermite`, `inverse` and `solve`;
 they introduce no shared tactic dispatcher or new library. Polynomial-target
-recognition is requested separately against hex-poly-mathlib.
+recognition is requested separately against hex-poly-theory.
 
 `Literal.elabArgument` accepts an expected carrier. `VectorLiteral`,
 `vectorEntriesEq` and `vectorIdentification` provide the closed vector route
@@ -158,7 +158,7 @@ these operations; neither reduces rational coefficient normalization there.
 
 ## Kronecker-packed dot products
 
-`HexMatrixMathlib/Packed.lean` proves the packed dot product of
+`HexMatrixTheory/Packed.lean` proves the packed dot product of
 [hex-matrix §Kronecker-packed dot products](../../HexMatrix/SPEC/hex-matrix.md#kronecker-packed-dot-products)
 exact: `packRow` is `Nat.ofDigits` at the base `2^W`
 (`packRow_eq_ofDigits`; `packCol_eq` for the Horner loop), the product of

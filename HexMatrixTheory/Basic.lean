@@ -24,7 +24,7 @@ lemmas needed by downstream determinant and rank lemmas.
 
 open Matrix
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 universe u
 
@@ -157,4 +157,4 @@ theorem matrixEquiv_rowAdd (M : Hex.Matrix R n m) (src dst : Fin n) (c : R) :
 
 end RowAdd
 
-end HexMatrixMathlib
+end HexMatrixTheory

@@ -7,7 +7,7 @@ Authors: Kim Morrison
 module
 
 public import HexMatrix.Packed
-public import HexMatrixMathlib.Literal
+public import HexMatrixTheory.Literal
 public import Mathlib.Data.Nat.Digits.Defs
 public import Mathlib.Algebra.BigOperators.Fin
 public import Mathlib.Tactic.Ring
@@ -26,7 +26,7 @@ is their dot product; hence `dotPacked_eq`, which every packed checker's
 equality to its plain form reduces to.
 -/
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 open Hex.Matrix.Packed
 
@@ -551,4 +551,4 @@ theorem list_ext_getD (l₁ l₂ : List Int) (hlen : l₁.length = l₂.length)
   have := h j hj₁
   rwa [getD_eq_getElem' _ _ _ hj₁, getD_eq_getElem' _ _ _ hj₂] at this
 
-end HexMatrixMathlib
+end HexMatrixTheory

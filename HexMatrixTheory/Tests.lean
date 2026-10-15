@@ -5,13 +5,13 @@ Authors: Kim Morrison
 -/
 module
 
-import HexMatrixMathlib
+import HexMatrixTheory
 
 /-! Build-only examples for the literal layer: the identification of each
 literal syntax with its row list, by `rfl` for the vector chains and by the
 kernel's `entriesEq` for the other shapes, and the empty shapes. -/
 
-open HexMatrixMathlib
+open HexMatrixTheory
 
 example : (!![1, 2; 3, 4] : Matrix (Fin 2) (Fin 2) ℤ) = ofLists 2 2 [[1, 2], [3, 4]] := rfl
 example : Matrix.of ![![(1 : ℤ), 2], ![3, 4]] = ofLists 2 2 [[1, 2], [3, 4]] := rfl

@@ -6,14 +6,14 @@ Authors: Kim Morrison
 module
 
 public import HexMatrix.Lists
-public import HexMatrixMathlib.Literal
-public import HexMatrixMathlib.Algebra
+public import HexMatrixTheory.Literal
+public import HexMatrixTheory.Algebra
 
 public section
 
 /-! Transport of structural integer list products to Mathlib matrices. -/
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 open Hex.Matrix.Lists
 
@@ -100,4 +100,4 @@ theorem matrix_inverse_of_product {n : Nat} {a b : List (List Int)}
   ext i j
   simp [identity, Matrix.one_apply, Fin.ext_iff]
 
-end HexMatrixMathlib
+end HexMatrixTheory

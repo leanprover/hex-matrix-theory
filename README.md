@@ -1,10 +1,10 @@
-# hex-matrix-mathlib
+# hex-matrix-theory
 
 Part of [`hex`](https://github.com/kim-em/hex-dev), a computer algebra
 library for Lean 4. The aim is fast executable code, fully verified, built
 with spec-driven development.
 
-`hex-matrix-mathlib` is the Mathlib bridge for
+`hex-matrix-theory` is the theory companion of
 [`hex-matrix`](https://github.com/leanprover/hex-matrix). It identifies the
 executable dense matrices with Mathlib's function-based `Matrix`, so that
 Mathlib's linear-algebra results transfer to the computable representation.
@@ -17,15 +17,15 @@ Add to your `lakefile.toml`:
 
 ```toml
 [[require]]
-name = "hex-matrix-mathlib"
-git = "https://github.com/leanprover/hex-matrix-mathlib.git"
+name = "hex-matrix-theory"
+git = "https://github.com/leanprover/hex-matrix-theory.git"
 rev = "main"
 ```
 
 ```lean
-import HexMatrixMathlib
+import HexMatrixTheory
 
-open Hex HexMatrixMathlib
+open Hex HexMatrixTheory
 
 -- Every executable matrix corresponds to a Mathlib matrix with the same entries.
 #check @matrixEquiv      -- Hex.Matrix R n m ≃ Matrix (Fin n) (Fin m) R
@@ -108,7 +108,7 @@ libraries.
 Reference manual:
 
 The Mathlib correspondence section of the hex reference manual covers this library at
-<https://kim-em.github.io/hex-dev/find/?domain=Verso.Genre.Manual.section&name=hex-matrix-mathlib>.
+<https://kim-em.github.io/hex-dev/find/?domain=Verso.Genre.Manual.section&name=hex-matrix-theory>.
 
 # Contributing
 

@@ -6,14 +6,14 @@ Authors: Kim Morrison
 module
 
 public import HexMatrix.Scaled
-public import HexMatrixMathlib.Literal
+public import HexMatrixTheory.Literal
 public import Mathlib.Data.Rat.Lemmas
 
 public section
 
 /-! Proved common-denominator decoding for structural tactic frontends. -/
 
-namespace HexMatrixMathlib
+namespace HexMatrixTheory
 
 open Hex.Matrix.Lists
 
@@ -161,4 +161,4 @@ theorem decodeRows_encode (xs : List (List Rat)) :
     decodeRows (ScaledRows.encode xs) = xs := by
   exact (scaleRows_sound _ _ _ (encodeRows_denom_pos xs) (encode_scaleRows xs)).symm
 
-end HexMatrixMathlib
+end HexMatrixTheory
